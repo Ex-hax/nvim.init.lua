@@ -2,6 +2,15 @@
 -- 🎨 UI & Theme Configuration
 -- ───────────────────────────────────────────────────────────
 
+
+local opt = vim.opt
+local g = vim.g
+
+-- ───────────────────────────────────────────────────────────
+-- Set theme
+-- ───────────────────────────────────────────────────────────
+g.material_style = "palenight"
+
 require('material').setup({
 
     contrast = {

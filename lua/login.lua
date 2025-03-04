@@ -6,7 +6,7 @@ function F.authenticate()
     }
 
     -- Function to create a floating input window in the center
-    local function floating_password_prompt()
+    local function password_prompt()
         -- local buf = vim.api.nvim_create_buf(false, true)  -- Create scratch buffer
         -- local width, height = 50, 5
         -- local opts = {
@@ -25,18 +25,20 @@ function F.authenticate()
 
         -- Capture user input
         vim.fn.inputsave()
-        local input = vim.fn.inputsecret("🔒 Agent identified code > ")  -- The user enters credentials
+        -- local password = vim.fn.inputsecret("🔒 Agent identified code > ")  -- The user enters credentials
+        local password = vim.fn.inputsecret("🔒 password ~ ")
         vim.fn.inputrestore()
 
         -- Close the floating window after input
         -- vim.api.nvim_win_close(win, true)
 
-        return input
+        return password
     end
 
     -- Ask for password using floating window
-    local agent_identified_code_input = floating_password_prompt()
-    local username, password = agent_identified_code_input:match("([^@]+)@(.+)")
+    local username = vim.fn.input("👾 username ~ ")
+    local password = password_prompt()
+    -- local username, password = agent_identified_code_input:match("([^@]+)@(.+)")
 
     -- Validate credentials
     if username and password and valid_users[username] and valid_users[username] == vim.fn.sha256(password) then
@@ -46,7 +48,7 @@ function F.authenticate()
     else
         vim.cmd("redraw!")
         vim.cmd("echomsg '❌ Access Denied! Exiting...'")
-        vim.wait(1700)
+        vim.wait(1300)
         vim.cmd("qall!")
     end
 end
