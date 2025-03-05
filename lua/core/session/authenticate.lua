@@ -1,6 +1,6 @@
-local F = {}
+local authenticate = {}
 
-function F.authenticate()
+function authenticate.login()
     local valid_users = {
         lee = "1924d44ae230e4302427affa8cb43d2674a3ebeac73f993ade7f3eafdc890b4b",
     }
@@ -53,4 +53,4 @@ function F.authenticate()
     end
 end
 
-return F
+return authenticate

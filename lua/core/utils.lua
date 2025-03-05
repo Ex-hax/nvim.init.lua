@@ -1,5 +1,8 @@
 local api = vim.api
-login_G = require('login')
+authenticate = require('core.session.authenticate')
+
+session = require('core.session.session')
+
 -- Custom command to open Explorer tree
 api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
 
@@ -8,7 +11,7 @@ api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
 -- Define the custom command
 api.nvim_create_user_command("Sleep", function()
   -- Call the authenticate function from the login module
-  login_G.authenticate()
+  authenticate.login()
 end, {})
 
 -- AutoCmd to set cursor style at startup and reset on exit
@@ -27,7 +30,8 @@ api.nvim_create_autocmd("VimEnter", {
       -- ───────────────────────────────────────────────────────────
       -- 🔧 Login Import here for seemless
       -- ───────────────────────────────────────────────────────────
-      login_G.authenticate()
+      authenticate.login()
+      -- session.load() -- error can't recognize ~/ as root user path
       end, 100)  -- Delay of 100ms to ensure all plugins are fully loaded
   end,
 })
