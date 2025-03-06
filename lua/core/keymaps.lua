@@ -5,11 +5,8 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- JSON Formatter (Ctrl + J)
-keymap("n", "<A-j>", ":%!prettier --parser json<CR>", opts)
-
 -- HTML (Jinja2 format)
-keymap('n', '<A-h>', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+keymap('n', '<A-f>', ':lua vim.lsp.buf.format()<CR>', opts)
 
 -- Cancel highlight
 keymap("n", "<Esc>", ":nohlsearch<CR>", opts)
@@ -25,4 +22,3 @@ keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
-
