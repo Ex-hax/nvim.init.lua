@@ -17,5 +17,5 @@ lspconfig.yamlls.setup({ -- YAML LSP
 	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "yaml-language-server", "--stdio" },
 })
 lspconfig.sqlls.setup({}) -- SQL LSP
-lspconfig.sqlfmt.setup({})
+-- lspconfig.sqlfmt.setup({})
 lspconfig.lua_ls.setup({})
