@@ -15,6 +15,9 @@ require("lazy").setup({
     -- 🎨 Syntax Highlighting (Lazy load when a buffer is read)
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",      event = "BufReadPost" },
 
+    -- Comment
+    {"numToStr/Comment.nvim"},
+
     -- 📝 Auto-completion (Lazy load when inserting text)
     {
     "hrsh7th/nvim-cmp",

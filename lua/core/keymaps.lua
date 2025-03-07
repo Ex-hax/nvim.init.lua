@@ -22,3 +22,6 @@ keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
+
+keymap("n", "<A-/>", "gcc", { noremap = false, silent = true })
+keymap("v", "<A-/>", "gb", { noremap = false, silent = true })

@@ -16,15 +16,15 @@ vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#ad0707", bold = true }) -- Ti
 --     "                                                     ",
 -- }
 
-dashboard.section.header.val = {                         
+dashboard.section.header.val = {
 
-" -                           ",
-" ▓█████  ██▒   █▓ ██▓ ██▓    ",
-" ▓█   ▀ ▓██░   █▒▓██▒▓██▒    ",
-" ▒███    ▓██  █▒░▒██▒▒██░    ",
-" ▒▓█  ▄   ▒██ █░░░██░▒██░    ",
-" ░▒████▒   ▒▀█░  ░██░░██████▒",
-" ░░ ▒░ ░   ░ ▐░  ░▓  ░ ▒░▓  ░",
+    "                             ",
+    " ▓█████  ██▒   █▓ ██▓ ██▓    ",
+    " ▓█   ▀ ▓██░   █▒▓██▒▓██▒    ",
+    " ▒███    ▓██  █▒░▒██▒▒██░    ",
+    " ▒▓█  ▄   ▒██ █░░░██░▒██░    ",
+    " ░▒████▒   ▒▀█░  ░██░░██████▒",
+    " ░░ ▒░ ░   ░ ▐░  ░▓  ░ ▒░▓  ░",
 
 }
 
@@ -32,12 +32,12 @@ dashboard.section.header.opts.hl = "DashboardHeader"
 
 -- Set menu
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "📄 > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "🔭 > Find file", ":Telescope find_files<CR>"),
-    dashboard.button( "t", "📂 > Tree", ":Tree<CR>"),
-    dashboard.button( "r", "🎌 > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "s", "🛠️ > Settings" , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-    dashboard.button( "q", "🚪 > Quit NVIM", ":qa<CR>"),
+    dashboard.button("e", "📄 > New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("f", "🔭 > Find file", ":Telescope find_files<CR>"),
+    dashboard.button("t", "📂 > Tree", ":Tree<CR>"),
+    dashboard.button("r", "🎌 > Recent", ":Telescope oldfiles<CR>"),
+    dashboard.button("s", "🛠️ > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+    dashboard.button("q", "🚪 > Quit NVIM", ":qa<CR>"),
 }
 
 -- Set footer
@@ -53,7 +53,7 @@ dashboard.section.buttons.val = {
 --       }
 --   end)
 --   ```
--- local fortune = require("alpha.fortune") 
+-- local fortune = require("alpha.fortune")
 -- dashboard.section.footer.val = fortune()
 
 -- Send config to alpha
