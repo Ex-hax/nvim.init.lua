@@ -1,74 +1,74 @@
 require("lazy").setup({
-	spec = {
+    spec = {
 
-		-- Custom dashboard
-		{ 'goolord/alpha-nvim' },
+    -- Custom dashboard
+    { 'goolord/alpha-nvim' },
 
-		-- 📂 File Explorer (Lazy Load when opening NvimTree)
-		{ "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "NvimTreeToggle" },
+    -- 📂 File Explorer (Lazy Load when opening NvimTree)
+    { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "NvimTreeToggle" },
 
-		{ "akinsho/bufferline.nvim",         dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
-		-- 🔠 Icons (Load immediately as other plugins depend on them)
-		{ "nvim-tree/nvim-web-devicons",     lazy = false },
+    -- 🔠 Icons (Load immediately as other plugins depend on them)
+    { "nvim-tree/nvim-web-devicons", lazy = false },
 
-		-- 🎨 Syntax Highlighting (Lazy load when a buffer is read)
-		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",                              event = "BufReadPost" },
+    -- 🎨 Syntax Highlighting (Lazy load when a buffer is read)
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",      event = "BufReadPost" },
 
-		-- 📝 Auto-completion (Lazy load when inserting text)
-		{
-			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
-			dependencies = {
-				"hrsh7th/cmp-nvim-lsp",
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-cmdline",
-				"L3MON4D3/LuaSnip",
-			}
-		},
+    -- 📝 Auto-completion (Lazy load when inserting text)
+    {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "L3MON4D3/LuaSnip",
+    }
+    },
 
-		-- ⚡ LSP (Lazy load when opening a file with an LSP server)
-		{ "neovim/nvim-lspconfig",               event = { "BufReadPre", "BufNewFile" } },
-		{
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			dependencies = { "neovim/nvim-lspconfig" },
-		},
+    -- ⚡ LSP (Lazy load when opening a file with an LSP server)
+    { "neovim/nvim-lspconfig",   event = { "BufReadPre", "BufNewFile" } },
+    {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    },
 
-		-- 🐞 Debugging (Lazy load when starting a debugging session)
-		{ "mfussenegger/nvim-dap",               cmd = "DapToggleBreakpoint" },
+    -- 🐞 Debugging (Lazy load when starting a debugging session)
+    { "mfussenegger/nvim-dap",   cmd = "DapToggleBreakpoint" },
 
-		-- 🔄 Git Integration (Lazy load when opening a git file)
-		{ "lewis6991/gitsigns.nvim",             event = "BufRead" },
+    -- 🔄 Git Integration (Lazy load when opening a git file)
+    { "lewis6991/gitsigns.nvim", event = "BufRead" },
 
-		-- 🔎 Fuzzy Finder (Lazy load when using Telescope)
-		{ "nvim-telescope/telescope.nvim",       dependencies = { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
+    -- 🔎 Fuzzy Finder (Lazy load when using Telescope)
+    { "nvim-telescope/telescope.nvim",   dependencies = { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
 
-		-- 🖥️ Terminal (Lazy load when opening ToggleTerm)
-		{ "akinsho/toggleterm.nvim",             cmd = "ToggleTerm" },
+    -- 🖥️ Terminal (Lazy load when opening ToggleTerm)
+    { "akinsho/toggleterm.nvim", cmd = "ToggleTerm" },
 
-		-- 🗄️ SQL Tools (Lazy load when opening SQL files)
-		{ "lifepillar/pgsql.vim",                ft = "sql" },
-		{ "tpope/vim-dadbod",                    cmd = "DB" },
-		{ "kristijanhusak/vim-dadbod-ui",        cmd = "DBUI" },
+    -- 🗄️ SQL Tools (Lazy load when opening SQL files)
+    { "lifepillar/pgsql.vim",    ft = "sql" },
+    { "tpope/vim-dadbod",    cmd = "DB" },
+    { "kristijanhusak/vim-dadbod-ui",    cmd = "DBUI" },
 
-		-- 🎨 Themes (Load Immediately)
-		{ "marko-cerovac/material.nvim",         lazy = false },
-		{ "folke/tokyonight.nvim",               lazy = false },
+    -- 🎨 Themes (Load Immediately)
+    { "marko-cerovac/material.nvim", lazy = false },
+    { "folke/tokyonight.nvim",   lazy = false },
 
-		-- 📊 Status Line (Lazy load when opening Neovim)
-		{ "nvim-lualine/lualine.nvim",           event = "VimEnter" },
+    -- 📊 Status Line (Lazy load when opening Neovim)
+    { "nvim-lualine/lualine.nvim",   event = "VimEnter" },
 
-		-- 📏 Indent Guides (Lazy load when opening a file)
-		{ "lukas-reineke/indent-blankline.nvim", event = "BufReadPost" },
+    -- 📏 Indent Guides (Lazy load when opening a file)
+    { "lukas-reineke/indent-blankline.nvim", event = "BufReadPost" },
 
-		-- 🔍 hlslens (Lazy load when searching)
-		{ "kevinhwang91/nvim-hlslens",           event = "CmdlineEnter" },
+    -- 🔍 hlslens (Lazy load when searching)
+    { "kevinhwang91/nvim-hlslens",   event = "CmdlineEnter" },
 
-		-- 📜 Scrollbar (Lazy load when opening a file)
-		{ "petertriho/nvim-scrollbar",           event = "BufReadPost" },
-	},
-	install = { colorscheme = { "material" } }, -- You can change this to "tokyonight"
-	checker = { enabled = true },
+    -- 📜 Scrollbar (Lazy load when opening a file)
+    { "petertriho/nvim-scrollbar",   event = "BufReadPost" },
+    },
+    install = { colorscheme = { "material" } }, -- You can change this to "tokyonight"
+    checker = { enabled = true },
 })
