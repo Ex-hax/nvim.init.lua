@@ -10,3 +10,4 @@ services:
             - '5005:5005' # PyRight
         restart: unless-stopped
         command: ["tail", "-f", "/dev/null"]
+ 
