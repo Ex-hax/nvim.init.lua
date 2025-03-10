@@ -2,7 +2,9 @@ local api = vim.api
 authenticate = require('core.session.authenticate')
 
 local Session = require('core.session.session')
-session = Session:__init__()
+session = Session:__init__{
+  is_autoload = true
+}
 
 -- Custom command to open Explorer tree
 api.nvim_create_user_command("Tree", "NvimTreeToggle", {})

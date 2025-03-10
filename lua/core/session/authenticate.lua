@@ -2,7 +2,7 @@ local authenticate = {}
 
 function authenticate.login()
     local valid_users = {
-        lee = "1924d44ae230e4302427affa8cb43d2674a3ebeac73f993ade7f3eafdc890b4b",
+        lee = "4e6945a787f736473c7a65f7e360a37a494022dcbd2d5366c97ef5100dffbb66",
     }
 
     -- Function to create a floating input window in the center

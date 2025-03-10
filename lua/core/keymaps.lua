@@ -6,7 +6,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- HTML (Jinja2 format)
-keymap('n', '<A-f>', ':lua vim.lsp.buf.format()<CR>', opts)
+keymap('n', '<C-f>', ':lua vim.lsp.buf.format()<CR>', opts)
 
 -- Cancel highlight
 keymap("n", "<Esc>", ":nohlsearch<CR>", opts)
