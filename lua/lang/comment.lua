@@ -1,1 +1,6 @@
-require("Comment").setup()
+require("Comment").setup({
+    mappings = {
+        basic = true,
+        extra = false,
+    },
+})
