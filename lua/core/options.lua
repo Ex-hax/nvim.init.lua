@@ -4,7 +4,10 @@
 
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 
+vim.o.termguicolors = true -- Set Neovim to use the full screen size
+vim.o.linespace = 0     -- Set Neovim to use the full screen size
 opt.number = true       -- Show line numbers
 opt.hlsearch = true     -- Highlight search results
 opt.incsearch = true    -- Incremental search
