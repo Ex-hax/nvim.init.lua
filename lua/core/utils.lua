@@ -2,13 +2,8 @@ local api = vim.api
 authenticate = require('core.session.authenticate')
 
 local Session = require('core.session.session')
-session = Session:__init__{
-  is_autoload = true
-}
-
-local Dev_server = require('devtools.dev_server')
-dev_server = Dev_server.__init__{
-    docker_compose = [[D:\work\remote-host]]
+session = Session:__init__ {
+    is_autoload = true
 }
 
 -- Custom command to open Explorer tree
@@ -16,43 +11,38 @@ api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
 
 -- Custom command to open sleep editor
 api.nvim_create_user_command("Sleep", function()
-  -- Call the authenticate function from the login module
-  authenticate.login()
+    -- Call the authenticate function from the login module
+    authenticate.login()
 end, {})
 
 api.nvim_create_user_command("Saves", function()
-  -- Call the session module
-  session:save()
+    -- Call the session module
+    session:save()
 end, {})
 
 api.nvim_create_user_command("Dels", function()
-  -- Call the session module
-  session:delete()
-end, {})
-
-api.nvim_create_user_command("DevUp", function()
-  -- Call the dev_server to up container
-  dev_server:up_d()
+    -- Call the session module
+    session:delete()
 end, {})
 
 -- AutoCmd to set cursor style at startup and reset on exit
 api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
-  callback = function()
-    local mode = vim.fn.expand("<amatch>") == "VimEnter" and
-      "n-v:ver25-blinkon500,i-c-ci-ve:ver25-blinkon500,r-cr-o:hor20-blinkon500"
-      or "a:ver25-blinkon500"
-    vim.opt.guicursor = mode
-  end,
+    callback = function()
+        local mode = vim.fn.expand("<amatch>") == "VimEnter" and
+            "n-v:ver25-blinkon500,i-c-ci-ve:ver25-blinkon500,r-cr-o:hor20-blinkon500"
+            or "a:ver25-blinkon500"
+        vim.opt.guicursor = mode
+    end,
 })
 
 api.nvim_create_autocmd("VimEnter", {
     callback = function()
         vim.defer_fn(function()
-        -- ───────────────────────────────────────────────────────────
-        -- 🔧 Login Import here for seemless
-        -- ───────────────────────────────────────────────────────────
-        authenticate.login()
-        session:load()
-        end, 100)  -- Delay of 100ms to ensure all plugins are fully loaded
+            -- ───────────────────────────────────────────────────────────
+            -- 🔧 Login Import here for seemless
+            -- ───────────────────────────────────────────────────────────
+            authenticate.login()
+            session:load()
+        end, 100) -- Delay of 100ms to ensure all plugins are fully loaded
     end,
 })
