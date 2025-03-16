@@ -6,6 +6,11 @@ session = Session:__init__{
   is_autoload = true
 }
 
+local Dev_server = require('devtools.dev_server')
+dev_server = Dev_server.__init__{
+    docker_compose = [[D:\work\remote-host]]
+}
+
 -- Custom command to open Explorer tree
 api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
 
@@ -23,6 +28,11 @@ end, {})
 api.nvim_create_user_command("Dels", function()
   -- Call the session module
   session:delete()
+end, {})
+
+api.nvim_create_user_command("DevUp", function()
+  -- Call the dev_server to up container
+  dev_server:up_d()
 end, {})
 
 -- AutoCmd to set cursor style at startup and reset on exit
