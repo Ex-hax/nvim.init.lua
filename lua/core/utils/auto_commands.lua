@@ -1,29 +1,6 @@
 local api = vim.api
-authenticate = require('core.session.authenticate')
-
-local Session = require('core.session.session')
-session = Session:__init__ {
-    is_autoload = true
-}
-
--- Custom command to open Explorer tree
-api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
-
--- Custom command to open sleep editor
-api.nvim_create_user_command("Lock", function()
-    -- Call the authenticate function from the login module
-    authenticate.login()
-end, {})
-
-api.nvim_create_user_command("Saves", function()
-    -- Call the session module
-    session:save()
-end, {})
-
-api.nvim_create_user_command("Dels", function()
-    -- Call the session module
-    session:delete()
-end, {})
+local authenticate = _G.authenticate
+local session = _G.session
 
 -- AutoCmd to set cursor style at startup and reset on exit
 api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
@@ -46,3 +23,4 @@ api.nvim_create_autocmd("VimEnter", {
         end, 100) -- Delay of 100ms to ensure all plugins are fully loaded
     end,
 })
+

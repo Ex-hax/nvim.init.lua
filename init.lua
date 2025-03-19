@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("core.plugins") -- Plugin setup & lazy loading
 require("core.options") -- General settings (line numbers, search, etc.)
 require("core.keymaps") -- Keybindings
-require("core.utils")   -- Utility functions
+require("core.utils.__init__")
 
 -- ───────────────────────────────────────────────────────────
 -- 🎨 UI & Appearance
@@ -33,6 +33,10 @@ require("uia.themes.material") -- Default UI Theme
 -- 🔧 Custom dashboard
 -- ───────────────────────────────────────────────────────────
 require("uia.alpha_dashboard")      -- Custom dashboard
+
+-- ───────────────────────────────────────────────────────────
+-- 🎨 Widget
+-- ───────────────────────────────────────────────────────────
 require("uia.widget._hlslens")      -- Enhanced search highlighting
 require("uia.widget._scrollbar")    -- Scrollbar for visual navigation
 require("uia.widget.file_explorer") -- NvimTree settings
