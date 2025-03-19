@@ -10,7 +10,7 @@ session = Session:__init__ {
 api.nvim_create_user_command("Tree", "NvimTreeToggle", {})
 
 -- Custom command to open sleep editor
-api.nvim_create_user_command("Sleep", function()
+api.nvim_create_user_command("Lock", function()
     -- Call the authenticate function from the login module
     authenticate.login()
 end, {})
