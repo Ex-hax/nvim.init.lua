@@ -19,3 +19,5 @@ lspconfig.yamlls.setup({ -- YAML LSP
 lspconfig.sqlls.setup({}) -- SQL LSP
 -- lspconfig.sqlfmt.setup({})
 lspconfig.lua_ls.setup({})
+
+lspconfig.vimls.setup({})
