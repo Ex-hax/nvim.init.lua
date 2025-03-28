@@ -1,6 +1,7 @@
 -- ───────────────────────────────────────────────────────────
 -- ⌨️ Keybindings
 -- ───────────────────────────────────────────────────────────
+local Echo = require("utils.echo")
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -78,4 +79,15 @@ end, opts)
 
 keymap("v", "<C-_>", function()
     require('Comment.api').toggle.linewise(vim.fn.visualmode())
+end, opts)
+
+keymap("n", "T", function()
+    local WindowsTerminal = require("devtools.terminal")
+    Echo.message_with_icon({msg = 'Opening WindowsTerminal ...'})
+    local success, err = pcall(WindowsTerminal.open)
+    if not success then
+        Echo.message_with_icon({ icon = '❌', msg = 'Failed to open Windows Terminal: ' .. err })
+    else
+        Echo.message_with_icon({icon = '✅', msg = 'Opened WindowsTerminal success!'})
+    end
 end, opts)

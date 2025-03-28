@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("core.plugins") -- Plugin setup & lazy loading
 require("core.options") -- General settings (line numbers, search, etc.)
 require("core.keymaps") -- Keybindings
-require("core.utils.__init__")
+require("core.commands.__init__")
 
 -- ───────────────────────────────────────────────────────────
 -- 🎨 UI & Appearance
@@ -60,4 +60,3 @@ require("navsearch._telescope") -- Fuzzy finder
 -- 🛠️ Development Tools
 -- ───────────────────────────────────────────────────────────
 require("devtools.git")      -- Git integration
-require("devtools.terminal") -- Terminal settings (Uncomment if needed)

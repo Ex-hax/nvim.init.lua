@@ -5,5 +5,5 @@ _G.session = Session:__init__ {
     is_autoload = true
 }
 
-require('core.utils.auto_commands')
-require('core.utils.user_commands')
+require('core.commands.auto_commands')
+require('core.commands.user_commands')

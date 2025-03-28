@@ -1,3 +1,5 @@
+local Echo = require("utils.echo")
+
 local authenticate = {}
 
 function authenticate.login()
@@ -43,11 +45,11 @@ function authenticate.login()
     -- Validate credentials
     if username and password and valid_users[username] and valid_users[username] == vim.fn.sha256(password) then
         vim.cmd("redraw!")
-        vim.cmd("echomsg '✅ Access Granted!'")
+        Echo.message_with_icon({icon = '✅', msg = 'Access Granted!'})
         vim.wait(1000)
     else
         vim.cmd("redraw!")
-        vim.cmd("echomsg '❌ Access Denied! Exiting...'")
+        Echo.message_with_icon({icon = '❌', msg = 'Access Denied! Exiting...'})
         vim.wait(1300)
         vim.cmd("qall!")
     end
