@@ -24,3 +24,14 @@ api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
+-- api.nvim_create_autocmd("TabClosed", {
+--     callback = function()
+--         local buffers = vim.fn.getbufinfo({ buflisted = true })
+--         for _, buf in ipairs(buffers) do
+--             if buf.windows == 0 then
+--                 api.nvim_buf_delete(buf.bufnr, { force = true }) -- Delete unshown buffers
+--             end
+--         end
+--     end
+-- })
+

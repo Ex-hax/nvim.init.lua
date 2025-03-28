@@ -13,8 +13,6 @@ keymap("n", "<Esc>", "<Cmd>nohlsearch<CR>", opts)
 
 -- Select all text in Normal mode
 keymap('n', '<C-a>', 'ggVG', opts)
--- Copy to system clipboard in Visual mode
-keymap('v', '<C-c>', '"+y', opts)
 
 -- Copy to system clipboard in Visual mode
 keymap('v', '<C-c>', '"+y', opts)

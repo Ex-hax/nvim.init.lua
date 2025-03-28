@@ -21,3 +21,8 @@ api.nvim_create_user_command("Dels", function()
     session:delete()
 end, {})
 
+api.nvim_create_user_command("Treeo", function(opts)
+    local path = opts.args ~= "" and opts.args or vim.fn.getcwd()
+    require("nvim-tree.api").tree.open({ path = path })
+end, { nargs = "?" })
+
