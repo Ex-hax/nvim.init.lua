@@ -5,7 +5,7 @@ function Echo.message(args)
     local msg = args.msg
 
     if msg then
-        vim.cmd(string.format("echomsg '%s %s'", icon, msg))
+        vim.cmd(string.format("echomsg '%s'", msg))
     end
 end
 
