@@ -27,7 +27,7 @@ require("core.commands.__init__")
 -- 🎨 UI & Appearance
 -- ───────────────────────────────────────────────────────────
 require("uia.themes.material") -- Default UI Theme
--- require("themes.tokyonight")  -- Default UI Theme
+-- require("uia.themes.tokyonight")  -- Default UI Theme
 
 -- ───────────────────────────────────────────────────────────
 -- 🔧 Custom dashboard
