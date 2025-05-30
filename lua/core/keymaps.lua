@@ -73,11 +73,11 @@ keymap('n', 'g#', function()
 end, opts)
 
 -- Comment
-keymap("n", "<C-_>", function()
+keymap("n", "<C->/", function()
     require('Comment.api').toggle.linewise.current()
 end, opts)
 
-keymap("v", "<C-_>", function()
+keymap("v", "<C-/>", function()
     require('Comment.api').toggle.linewise(vim.fn.visualmode())
 end, opts)
 
