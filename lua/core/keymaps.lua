@@ -73,7 +73,7 @@ keymap('n', 'g#', function()
 end, opts)
 
 -- Comment
-keymap("n", "<C->/", function()
+keymap("n", "<C-/>", function()
     require('Comment.api').toggle.linewise.current()
 end, opts)
 
