@@ -21,6 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("core.plugins") -- Plugin setup & lazy loading
 require("core.options") -- General settings (line numbers, search, etc.)
 require("core.keymaps") -- Keybindings
+require("core.diagnostic")
 require("core.commands.__init__")
 
 -- ───────────────────────────────────────────────────────────
