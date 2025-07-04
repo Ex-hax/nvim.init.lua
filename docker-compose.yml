@@ -1,0 +1,21 @@
+services:
+  nvim_docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nvim
+    # command: nvim .  # Auto-open Neovim in workdir
+    volumes:
+      - ~/work:/home/work  # Project code
+      - nvim_config:/root/.config  # Neovim config
+      - nvim_data:/root/.local/share/nvim
+    working_dir: /home/work
+    environment:
+      - PATH=/usr/local/bin:/usr/bin:/bin:$PATH
+    stdin_open: true
+    tty: true
+
+# Named volumes to persist configs
+volumes:
+  nvim_config:
+  nvim_data:
