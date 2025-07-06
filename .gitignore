@@ -1,3 +1,4 @@
 /lazy
 lazy-lock.json
 .DS_Store
+.git-credentials

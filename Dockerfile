@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
 # Add to PATH
 RUN pipx ensurepath
 
-RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-arm64.tar.gz && \
+RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-arm64.tar.gz && \
     tar -xzf nvim-linux-arm64.tar.gz && \
     mv nvim-linux-arm64 /opt/nvim && \
     ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
@@ -44,12 +44,16 @@ RUN mkdir -p /root/.config
 
 # Copy credentials and clone the repo
 COPY .git-credentials /root/.git-credentials
-RUN git clone https://github.com/Ex-hax/nvim.init.lua.git /root/.config/nvim && \
-    cd /root/.config/nvim && \
+RUN git clone https://github.com/Ex-hax/nvim.init.lua.git /root/.config/ntmp && \
+    cd /root/.config/ntmp && \
     git fetch origin && \
-    git pull origin master && \
+    git branch arm64 && \
+    git checkout arm64 && \
+    git pull origin arm64 && \
     cd && \
-    rm /root/.git-credentials
+    mv /root/.config/ntmp/src /root/.config/nvim && \
+    rm /root/.git-credentials && \
+    rm -rf /root/.config/ntmp
 
 # Change shell to zsh
 RUN chsh -s /bin/zsh
