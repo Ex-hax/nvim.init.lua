@@ -1,23 +1,21 @@
 -- ───────────────────────────────────────────────────────────
 -- 💡 LSP Configuration (Language Server Protocol)
 -- ───────────────────────────────────────────────────────────
-local lspconfig = vim.lsp.config
+local lsp_server = {
+  {serv='pyright', act='enable'}, 
+  {serv='ruff', act='enable'},
+  {serv='jsonls', act='enable'},
+  {serv='html', act='enable'},
+  {serv='yamlls', act='enable'},
+  {serv='sqlls', act='enable'},
+  {serv='lua_ls', act='enable'},
+  {serv='vimls', act='enable'}
+}
 
-lspconfig.pyright.setup({
-	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "pyright", "--stdio" },
-}) -- Python LSP
-lspconfig.ruff.setup({})
-lspconfig.jsonls.setup({
-	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "prettier", "--stdio" },
-}) -- JSON LSP
-lspconfig.html.setup({
-	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "vscode-langservers-extracted", "--stdio" },
-})                       -- HTML LSP
-lspconfig.yamlls.setup({ -- YAML LSP
-	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "yaml-language-server", "--stdio" },
-})
-lspconfig.sqlls.setup({}) -- SQL LSP
--- lspconfig.sqlfmt.setup({})
-lspconfig.lua_ls.setup({})
-
-lspconfig.vimls.setup({})
+for _, record in ipairs(lsp_server) do
+  if record.act == 'enable' then
+    vim_lsp.enable(record.serv)
+  elseif record.act == 'disable' then
+    vim_lsp.disable(record.serv)
+  end
+end
