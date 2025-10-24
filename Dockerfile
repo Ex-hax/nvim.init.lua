@@ -27,8 +27,9 @@ RUN apt-get update && apt-get install -y \
 # Add to PATH
 RUN pipx ensurepath
 
-RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-arm64.tar.gz && \
-    tar -xzf nvim-linux-arm64.tar.gz && \
+# RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz && \
+COPY ./nvim-linux-arm64.tar.gz ./nvim-linux-arm64.tar.gz
+RUN tar -xzf nvim-linux-arm64.tar.gz && \
     mv nvim-linux-arm64 /opt/nvim && \
     ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
     rm nvim-linux-arm64.tar.gz
@@ -47,9 +48,12 @@ COPY .git-credentials /root/.git-credentials
 RUN git clone https://github.com/Ex-hax/nvim.init.lua.git /root/.config/ntmp && \
     cd /root/.config/ntmp && \
     git fetch origin && \
-    git branch arm64 && \
-    git checkout arm64 && \
-    git pull origin arm64 && \
+    # git branch arm64 && \
+    # git checkout arm64 && \
+    # git pull origin arm64 && \
+    git branch hotfix/arm64 && \
+    git checkout hotfix/arm64 && \
+    git pull origin hotfix/arm64 && \
     cd && \
     mv /root/.config/ntmp/src /root/.config/nvim && \
     rm /root/.git-credentials && \

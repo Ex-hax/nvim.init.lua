@@ -1,7 +1,7 @@
 -- ───────────────────────────────────────────────────────────
 -- 💡 LSP Configuration (Language Server Protocol)
 -- ───────────────────────────────────────────────────────────
-local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config
 
 lspconfig.pyright.setup({
 	-- cmd = { "docker", "exec", "-i", "nvim_lsp_server", "pyright", "--stdio" },
