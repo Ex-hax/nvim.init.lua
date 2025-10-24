@@ -1,6 +1,7 @@
 -- ───────────────────────────────────────────────────────────
 -- 💡 LSP Configuration (Language Server Protocol)
 -- ───────────────────────────────────────────────────────────
+local vim_lsp = vim.lsp
 local lsp_server = {
   {serv='pyright', act='enable'}, 
   {serv='ruff', act='enable'},
