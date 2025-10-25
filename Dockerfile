@@ -51,7 +51,6 @@ RUN git clone https://github.com/Ex-hax/nvim.init.lua.git /root/.config/ntmp && 
     # git branch arm64 && \
     # git checkout arm64 && \
     # git pull origin arm64 && \
-    git branch hotfix/arm64 && \
     git checkout hotfix/arm64 && \
     git pull origin hotfix/arm64 && \
     cd && \
