@@ -37,26 +37,10 @@ RUN tar -xzf nvim-linux-arm64.tar.gz && \
 # Optional: Set root password
 RUN echo "root:1234" | chpasswd
 
-# Stores in plaintext (~/.git-credentials)
-RUN git config --global credential.helper 'store --file=/root/.git-credentials'
-
 # Create folder for nvim lazy
-RUN mkdir -p /root/.config
+# RUN mkdir -p /root/.config
 
-# Copy credentials and clone the repo
-COPY .git-credentials /root/.git-credentials
-RUN git clone https://github.com/Ex-hax/nvim.init.lua.git /root/.config/ntmp && \
-    cd /root/.config/ntmp && \
-    git fetch origin && \
-    # git branch arm64 && \
-    # git checkout arm64 && \
-    # git pull origin arm64 && \
-    git checkout hotfix/arm64 && \
-    git pull origin hotfix/arm64 && \
-    cd && \
-    mv /root/.config/ntmp/src /root/.config/nvim && \
-    rm /root/.git-credentials && \
-    rm -rf /root/.config/ntmp
+COPY ./src /root/.config/nvim
 
 # Change shell to zsh
 RUN chsh -s /bin/zsh

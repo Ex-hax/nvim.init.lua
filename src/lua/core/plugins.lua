@@ -32,11 +32,27 @@ require("lazy").setup({
         },
 
         -- ⚡ LSP (Lazy load when opening a file with an LSP server)
-        { "neovim/nvim-lspconfig",         event = { "BufReadPre", "BufNewFile" } },
+        {
+            "neovim/nvim-lspconfig",
+            event = { "BufReadPre", "BufNewFile" }
+        },
         {
             "williamboman/mason.nvim",
+                -- opts = {
+                --     ui = {
+                --         border = "rounded",
+                --     },
+                --     registries = {
+                --         "github:mason-org/mason-registry",
+                --     },
+                -- },
+        },
+        {
             "williamboman/mason-lspconfig.nvim",
-            dependencies = { "neovim/nvim-lspconfig" },
+            dependencies = { 
+                "neovim/nvim-lspconfig",
+                "williamboman/mason.nvim"
+            },
         },
 
         -- 🐞 Debugging (Lazy load when starting a debugging session)
