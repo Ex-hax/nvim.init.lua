@@ -38,9 +38,6 @@ RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/
 # Optional: Set root password
 RUN echo "root:1234" | chpasswd
 
-# Create folder for nvim lazy
-# RUN mkdir -p /root/.config
-
 COPY ./src /root/.config/nvim
 
 # Change shell to zsh
