@@ -27,9 +27,10 @@ RUN apt-get update && apt-get install -y \
 # Add to PATH
 RUN pipx ensurepath
 
-# RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz && \
-COPY ./nvim-linux-arm64.tar.gz ./nvim-linux-arm64.tar.gz
-RUN tar -xzf nvim-linux-arm64.tar.gz && \
+RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz && \
+# COPY ./nvim-linux-arm64.tar.gz ./nvim-linux-arm64.tar.gz
+# RUN
+    tar -xzf nvim-linux-arm64.tar.gz && \
     mv nvim-linux-arm64 /opt/nvim && \
     ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim && \
     rm nvim-linux-arm64.tar.gz
