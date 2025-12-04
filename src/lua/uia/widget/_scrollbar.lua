@@ -154,6 +154,6 @@ require("scrollbar.handlers.search").setup({
         for _, p in ipairs(pos_list) do
             table.insert(highlights, { line = p[1] - 1, text = "▎", hl = "Search" })
         end
-        sbar.show(highlights)
+        --sbar.show(highlights)
     end
 })
