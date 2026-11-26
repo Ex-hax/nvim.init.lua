@@ -7,15 +7,17 @@ services:
     # command: nvim .  # Auto-open Neovim in workdir
     volumes:
       - ~/work:/home/work  # Project code
-      - nvim_config:/root/.config  # Neovim config
+      - ./src:/root/.config/nvim  # Neovim config: live link to ./src on the Mac (edit, then restart nvim)
       - nvim_data:/root/.local/share/nvim
+      - claude_config:/root/.claude  # Claude Code login + settings (persists across rebuilds)
     working_dir: /home/work
     environment:
       - PATH=/usr/local/bin:/usr/bin:/bin:$PATH
+      - CLAUDE_CONFIG_DIR=/root/.claude  # keep .claude.json inside the volume too
     stdin_open: true
     tty: true
 
 # Named volumes to persist configs
 volumes:
-  nvim_config:
   nvim_data:
+  claude_config:

@@ -2,7 +2,10 @@
 
 # ==============================================
 # nvim-docker launcher for iTerm2
-# Path: ~/personal/nvim/nvim.sh
+# Path: ~/personal/nvim.init.lua/nvim.sh
+#
+# The Neovim config is this repo's ./src, bind-mounted into the container
+# (see docker-compose.yml), so config edits apply on the next Neovim start.
 # ==============================================
 
 CONTAINER_NAME="nvim"

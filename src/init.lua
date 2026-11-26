@@ -40,7 +40,7 @@ require("uia.alpha_dashboard")      -- Custom dashboard
 -- ───────────────────────────────────────────────────────────
 require("uia.widget._hlslens")      -- Enhanced search highlighting
 require("uia.widget._scrollbar")    -- Scrollbar for visual navigation
-require("uia.widget.file_explorer") -- NvimTree settings
+require("uia.widget.file_explorer") -- neo-tree settings
 require("uia.widget._tab")          -- File buffer tab
 
 -- ───────────────────────────────────────────────────────────

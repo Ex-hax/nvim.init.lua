@@ -20,3 +20,14 @@ for _, record in ipairs(lsp_server) do
     vim_lsp.disable(record.serv)
   end
 end
+
+-- Go to definition (works across files). Ctrl-o = back, Ctrl-i / Tab = forward.
+--   gd   go to definition
+--   gD   go to declaration
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local o = { buffer = args.buf, silent = true }
+    vim.keymap.set('n', 'gd', vim_lsp.buf.definition, vim.tbl_extend('force', o, { desc = 'LSP: go to definition' }))
+    vim.keymap.set('n', 'gD', vim_lsp.buf.declaration, vim.tbl_extend('force', o, { desc = 'LSP: go to declaration' }))
+  end,
+})

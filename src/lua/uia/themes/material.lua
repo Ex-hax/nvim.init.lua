@@ -50,7 +50,7 @@ require('material').setup({
         -- "mini",
         -- "neogit",
         -- "neotest",
-        -- "neo-tree",
+        "neo-tree",
         -- "neorg",
         -- "noice",
         -- "nvim-cmp",
@@ -68,7 +68,7 @@ require('material').setup({
     disable = {
         colored_cursor = false, -- Disable the colored cursor
         borders = false,        -- Disable borders between vertically split windows
-        background = false,     -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+        background = true,      -- Transparent: use the terminal's (iTerm2 blurred) background
         term_colors = false,    -- Prevent the theme from setting terminal colors
         eob_lines = false       -- Hide the end-of-buffer lines
     },
@@ -107,5 +107,20 @@ require("ibl").setup {
     -- indent = { char = "│" }, -- Change to '┆' or '¦' if you prefer
     scope = { enabled = true } -- Enables function-level guides
 }
+
+-- Transparent background: also clear the side panels and gutters the theme
+-- still paints (keeps each group's text colour, only removes its background).
+local transparent_groups = {
+    "Normal", "NormalNC", "SignColumn", "EndOfBuffer", "LineNr", "FoldColumn",
+    "NeoTreeNormal", "NeoTreeNormalNC", "NeoTreeEndOfBuffer",
+}
+local function clear_backgrounds()
+    for _, group in ipairs(transparent_groups) do
+        local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+        hl.bg, hl.ctermbg = nil, nil
+        vim.api.nvim_set_hl(0, group, hl)
+    end
+end
+vim.api.nvim_create_autocmd("ColorScheme", { pattern = "material", callback = clear_backgrounds })
 
 vim.cmd("colorscheme material")

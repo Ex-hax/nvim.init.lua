@@ -1,5 +1,49 @@
+# ── Plugins / build artifacts ─────────────────────────────
 /lazy
 lazy-lock.json
-.DS_Store
-.git-credentials
 *.tar.gz
+*.bak
+
+# ── OS / editor junk ──────────────────────────────────────
+.DS_Store
+*.swp
+*.swo
+
+# ── Secrets: credentials & tokens ─────────────────────────
+.git-credentials
+.netrc
+.npmrc
+.pypirc
+credentials.json
+*credentials*.json
+secrets.*
+*.secret
+*.secrets
+token
+*.token
+
+# ── Secrets: environment files ────────────────────────────
+.env
+.env.*
+!.env.example
+*.env
+
+# ── Secrets: certificates & keys ──────────────────────────
+certs/
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+id_ecdsa*
+
+# ── Local-only login data (see core/session/authenticate.lua) ──
+src/lua/core/session/user.lua
+
+# ── Claude Code local settings ────────────────────────────
+.claude/settings.local.json

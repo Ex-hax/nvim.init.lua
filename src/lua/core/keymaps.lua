@@ -77,17 +77,21 @@ keymap("n", "<C-/>", function()
     require('Comment.api').toggle.linewise.current()
 end, opts)
 
-keymap("v", "<C-/>", function()
+keymap("x", "<C-/>", function()
+    -- Leave visual mode first so the '< and '> marks point at the current
+    -- selection; otherwise Comment.nvim toggles the previous selection's range.
+    local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+    vim.api.nvim_feedkeys(esc, "nx", false)
     require('Comment.api').toggle.linewise(vim.fn.visualmode())
 end, opts)
 
 keymap("n", "T", function()
     local WindowsTerminal = require("devtools.terminal")
-    Echo.message_with_icon({msg = 'Opening WindowsTerminal ...'})
+    Echo.message_with_icon({ msg = 'Opening WindowsTerminal ...' })
     local success, err = pcall(WindowsTerminal.open)
     if not success then
         Echo.message_with_icon({ icon = '❌', msg = 'Failed to open Windows Terminal: ' .. err })
     else
-        Echo.message_with_icon({icon = '✅', msg = 'Opened WindowsTerminal success!'})
+        Echo.message_with_icon({ icon = '✅', msg = 'Opened WindowsTerminal success!' })
     end
 end, opts)
