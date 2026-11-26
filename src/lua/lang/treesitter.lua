@@ -1,13 +1,8 @@
 -- ───────────────────────────────────────────────────────────
--- 📂 File Explorer (nvim-tree)
+-- 📜 Treesitter (Better Syntax Highlighting)
 -- ───────────────────────────────────────────────────────────
 
-require("nvim-tree").setup({  
-    git = {
-      enable = true,
-      ignore = false,
-      timeout = 1500,
-    },
-  })
-
-require("nvim-web-devicons").setup()
+require("nvim-treesitter.configs").setup({
+    ensure_installed = { "python", "json", "yaml", "toml", "markdown", "sql", "lua", "html", "jinja" },
+    highlight = { enable = true },
+})

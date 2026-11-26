@@ -4,8 +4,16 @@ require("lazy").setup({
         -- Custom dashboard
         { 'goolord/alpha-nvim' },
 
-        -- 📂 File Explorer (Lazy Load when opening NvimTree)
-        { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "NvimTreeToggle" },
+        -- 📂 File Explorer (configured in uia/widget/file_explorer.lua)
+        {
+            "nvim-neo-tree/neo-tree.nvim",
+            branch = "v3.x",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "MunifTanjim/nui.nvim",
+                "nvim-tree/nvim-web-devicons",
+            },
+        },
 
         { "akinsho/bufferline.nvim",         dependencies = { "nvim-tree/nvim-web-devicons" } },
 
@@ -32,11 +40,20 @@ require("lazy").setup({
         },
 
         -- ⚡ LSP (Lazy load when opening a file with an LSP server)
-        { "neovim/nvim-lspconfig",         event = { "BufReadPre", "BufNewFile" } },
+        {
+            "neovim/nvim-lspconfig",
+            event = { "BufReadPre", "BufNewFile" }
+        },
         {
             "williamboman/mason.nvim",
+              
+        },
+        {
             "williamboman/mason-lspconfig.nvim",
-            dependencies = { "neovim/nvim-lspconfig" },
+            dependencies = { 
+                "neovim/nvim-lspconfig",
+                "williamboman/mason.nvim"
+            },
         },
 
         -- 🐞 Debugging (Lazy load when starting a debugging session)
@@ -66,6 +83,28 @@ require("lazy").setup({
 
         -- 📜 Scrollbar (Lazy load when opening a file)
         { "petertriho/nvim-scrollbar",           event = "BufReadPost" },
+
+        -- 🤖 Claude Code (IDE-style integration: chat, diffs, context sync)
+        { "folke/snacks.nvim",                   lazy = true },
+        {
+            "coder/claudecode.nvim",
+            dependencies = { "folke/snacks.nvim" },
+            config = true,
+            cmd = {
+                "ClaudeCode", "ClaudeCodeFocus", "ClaudeCodeSelectModel",
+                "ClaudeCodeAdd", "ClaudeCodeSend", "ClaudeCodeTreeAdd",
+                "ClaudeCodeStatus", "ClaudeCodeStart", "ClaudeCodeStop",
+                "ClaudeCodeOpen", "ClaudeCodeClose", "ClaudeCodeDiffAccept",
+                "ClaudeCodeDiffDeny", "ClaudeCodeCloseAllDiffs",
+            },
+            keys = {
+                { "<leader>ac", "<cmd>ClaudeCode<cr>",           desc = "Toggle Claude" },
+                { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",      desc = "Focus Claude" },
+                { "<leader>as", "<cmd>ClaudeCodeSend<cr>",       mode = "v",             desc = "Send selection to Claude" },
+                { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept Claude diff" },
+                { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Reject Claude diff" },
+            },
+        },
     },
     install = { colorscheme = { "material" } }, -- You can change this to "tokyonight"
     checker = { enabled = true },

@@ -18,8 +18,9 @@ api.nvim_create_autocmd("VimEnter", {
             -- ───────────────────────────────────────────────────────────
             -- 🔧 Login Import here for seemless
             -- ───────────────────────────────────────────────────────────
-            authenticate.login()
-            session:load()
+            -- The login box doesn't block (the dashboard keeps animating);
+            -- the last session is loaded once the login succeeds.
+            authenticate.login(function() session:autoload() end)
         end, 100) -- Delay of 100ms to ensure all plugins are fully loaded
     end,
 })
