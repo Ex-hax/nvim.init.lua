@@ -51,6 +51,7 @@ require("lang.treesitter") -- Syntax highlighting
 require("lang.mason_lsp")  -- mason lsp
 require("lang.lsp")        -- LSP (Uncomment if using)
 require("lang.comment")    -- Comment/Uncomment code
+require("lang.format")     -- Formatter & linter (SQL: sqlfluff)
 
 -- ───────────────────────────────────────────────────────────
 -- 🔎 Code Navigation & Search

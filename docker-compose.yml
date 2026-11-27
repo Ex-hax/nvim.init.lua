@@ -1,3 +1,8 @@
+# Normal use: the Neovim config comes from the image (COPY ./src in the Dockerfile).
+#   Update config:  docker compose build --builder corp-builder && docker compose up -d
+# Development: add docker-compose.dev.yml to bind-mount ./src (no rebuilds):
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+# Don't mount a volume on /root/.config: it would hide the image's config.
 services:
   nvim_docker:
     build:
@@ -7,7 +12,6 @@ services:
     # command: nvim .  # Auto-open Neovim in workdir
     volumes:
       - ~/work:/home/work  # Project code
-      - ./src:/root/.config/nvim  # Neovim config: live link to ./src on the Mac (edit, then restart nvim)
       - nvim_data:/root/.local/share/nvim
       - claude_config:/root/.claude  # Claude Code login + settings (persists across rebuilds)
     working_dir: /home/work

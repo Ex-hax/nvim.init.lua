@@ -121,8 +121,18 @@ This **keeps** the named volumes:
 
 Don't run `docker compose down -v` or `docker volume rm`, which delete them.
 
-**Config changes don't need a rebuild:** `./src` is bind-mounted as the Neovim config
-(`/root/.config/nvim`), so an edit on the Mac applies the next time Neovim starts.
+**Config changes:** the Neovim config (`./src`) is baked into the image, so after
+changing it, rebuild (step 4) and run `docker compose up -d`.
+
+For development, start the container with the dev override. It bind-mounts `./src`,
+so an edit applies the next time Neovim starts, with no rebuild:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+```
+
+When you're done, rebuild and run a plain `docker compose up -d` to go back to the
+image's config.
 
 ---
 

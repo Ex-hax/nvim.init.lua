@@ -1,0 +1,12 @@
+# Development override: use the Neovim config live from ./src on the Mac
+# instead of the copy baked into the image. Edit a file, restart Neovim — done.
+#
+#   Start dev mode:     docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+#   Back to normal:     docker compose build --builder corp-builder && docker compose up -d
+#
+# Switching modes recreates the container (open Neovims in it are closed);
+# plugins, Mason, sessions and the Claude login are kept (named volumes).
+services:
+  nvim_docker:
+    volumes:
+      - ./src:/root/.config/nvim

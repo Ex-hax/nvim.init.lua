@@ -20,7 +20,12 @@ api.nvim_create_autocmd("VimEnter", {
             -- ───────────────────────────────────────────────────────────
             -- The login box doesn't block (the dashboard keeps animating);
             -- the last session is loaded once the login succeeds.
-            authenticate.login(function() session:autoload() end)
+            -- Without user.lua the login is off: just load the session.
+            if authenticate.enabled() then
+                authenticate.login(function() session:autoload() end)
+            else
+                session:autoload()
+            end
         end, 100) -- Delay of 100ms to ensure all plugins are fully loaded
     end,
 })

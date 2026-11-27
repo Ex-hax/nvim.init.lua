@@ -88,11 +88,13 @@ api.nvim_create_user_command("Tree", function()
     vim.cmd("Neotree toggle")
 end, {})
 
--- Custom command to open sleep editor
-api.nvim_create_user_command("Lock", function()
-    -- Call the authenticate function from the login module
-    authenticate.login()
-end, {})
+-- :Lock  lock the editor behind the login box
+--   Only exists when the login is on (lua/core/session/user.lua has users).
+if authenticate.enabled() then
+    api.nvim_create_user_command("Lock", function()
+        authenticate.login()
+    end, {})
+end
 
 -- Named sessions
 --   :Saves [name]   save (prompts for a name if omitted)

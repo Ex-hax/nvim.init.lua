@@ -1,0 +1,13 @@
+# Keep the build context small and free of secrets.
+# (The build only needs: Dockerfile, certs/, docker/, src/)
+.git
+.gitignore
+.git-credentials
+.claude
+.DS_Store
+**/.DS_Store
+**/*.bak
+*.tar.gz
+docs
+nvim.sh
+docker-compose*.yml
