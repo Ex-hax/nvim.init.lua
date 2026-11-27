@@ -43,6 +43,12 @@ RUN apt-get update && apt-get install -y \
 # Add to PATH
 RUN pipx ensurepath
 
+# sqlfluff: SQL / Jinja (Airflow) formatter + linter used by Neovim (lang/format.lua).
+# Same version as the work projects' requirements-dev.txt so results match.
+RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install "sqlfluff==3.3.0"
+# Default settings (postgres + jinja + fake Airflow variables); project configs override it
+COPY docker/sqlfluff.cfg /root/.sqlfluff
+
 RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz && \
 # COPY ./nvim-linux-arm64.tar.gz ./nvim-linux-arm64.tar.gz
 # RUN
@@ -54,9 +60,10 @@ RUN curl -fLo nvim-linux-arm64.tar.gz https://github.com/neovim/neovim/releases/
 # Optional: Set root password
 RUN echo "root:1234" | chpasswd
 
-# Neovim config is NOT copied into the image: docker-compose.yml bind-mounts
-# ./src to /root/.config/nvim, so config edits on the Mac apply on the next
-# Neovim start without a rebuild.
+# Neovim config, baked into the image. Normal use: change ./src, then rebuild
+# (docker compose build + up -d). For development, docker-compose.dev.yml
+# bind-mounts ./src over this copy so edits apply on the next Neovim start.
+COPY ./src /root/.config/nvim
 
 # Install Claude Code CLI (used by coder/claudecode.nvim inside Neovim)
 RUN npm install -g @anthropic-ai/claude-code

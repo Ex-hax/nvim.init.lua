@@ -7,7 +7,8 @@
 --   To get the hash of a password, run inside Neovim:
 --     :echo sha256("your-password")
 --
--- Without user.lua the login is turned off (Neovim opens with a warning).
+-- Without user.lua (or with no users in it) the login is turned off:
+-- Neovim starts without the login box, and the :Lock command doesn't exist.
 return {
     -- yourname = "paste-the-sha256-hash-here",
 }

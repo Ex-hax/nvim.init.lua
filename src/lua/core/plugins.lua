@@ -56,6 +56,10 @@ require("lazy").setup({
             },
         },
 
+        -- 🧹 Formatting & linting (configured in lang/format.lua; SQL uses sqlfluff)
+        { "stevearc/conform.nvim" },
+        { "mfussenegger/nvim-lint" },
+
         -- 🐞 Debugging (Lazy load when starting a debugging session)
         { "mfussenegger/nvim-dap",         cmd = "DapToggleBreakpoint" },
 

@@ -11,6 +11,12 @@ local function load_users()
     return nil
 end
 
+-- Is the login feature on? Only when user.lua exists and has at least one user.
+-- When it's off, Neovim starts without the login box and there is no :Lock.
+function authenticate.enabled()
+    return load_users() ~= nil
+end
+
 -- Login box (non-blocking)
 --   A centered floating window asks for the username, then the password
 --   (shown as ****). Keys are captured with vim.on_key instead of input(),
@@ -28,9 +34,7 @@ function authenticate.login(on_success)
 
     local valid_users = load_users()
     if not valid_users then
-        -- No user.lua (e.g. a fresh clone): don't lock you out of the editor
-        vim.notify("Login is off: no users in lua/core/session/user.lua (see user.example.lua)",
-            vim.log.levels.WARN)
+        -- Login is off (no user.lua): nothing to check, carry on
         if on_success then on_success() end
         return
     end

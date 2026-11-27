@@ -6,8 +6,11 @@ local Echo = require("utils.echo")
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- HTML (Jinja2 format)
-keymap('n', '<C-f>', vim.lsp.buf.format, opts)
+-- Format the file (or the selected lines) — see lang/format.lua
+--   SQL (incl. Jinja/Airflow) → sqlfluff; other files → their LSP, as before
+keymap({ 'n', 'x' }, '<C-f>', function()
+    require("lang.format").format() -- shows in progress / success / failed
+end, opts)
 
 -- Cancel highlight
 keymap("n", "<Esc>", "<Cmd>nohlsearch<CR>", opts)
